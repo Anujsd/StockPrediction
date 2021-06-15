@@ -1,0 +1,152 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <style>
+      .box {
+        display: flex;
+      }
+      .boxsize {
+        height: 50px;
+        width: 150px;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      body {
+        background-color: #e0ebeb;
+      }
+    </style>
+
+    <title>Stock Prediction</title>
+  </head>
+
+  <body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand">Stocks Predictions</a>
+        <form class="d-flex" method="POST" action="">
+          {% csrf_token %}
+          <input
+            name="search"
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div
+      style="
+        margin: 25px 25px 25px 25px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 50px;
+      "
+    >
+      <h1>{{name}}</h1>
+
+      <div class="box">
+        <div class="boxsize">
+          <h6 style="color: Gray">Market Cap</h6>
+          <div>{{mkcap}}</div>
+        </div>
+        <div class="boxsize">
+          <h6 style="color: Gray">P/E</h6>
+          <div>{{pe}}</div>
+        </div>
+        <div class="boxsize">
+          <h6 style="color: Gray">Price</h6>
+          <div>{{shprice}}</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px">
+        <h5>About</h5>
+        <p>{{info}}</p>
+      </div>
+    </div>
+
+    <div
+      style="
+        margin: 25px 25px 25px 25px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 50px;
+      "
+    >
+      <img
+        src="static/{{file_name1}}.png"
+        alt="My image"
+        width="1400"
+        height="500"
+      />
+    </div>
+
+    <div
+      class="box"
+      style="
+        margin: 25px 25px 25px 25px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 50px;
+      "
+    >
+      <div style="display: flex; flex-direction: column">
+        <div><h3 style="padding: 10px">Price Forecast</h3></div>
+        <div>
+          <p>
+            Here we are predicting next year's value of stock.
+            <strong>LSTM algorithm </strong>is used during prediction. Also
+            factors like Revenue, Expenses, Net Profit, Liabilities, assets,
+            cash flow and current stock price are used as factors for
+            prediction.
+          </p>
+        </div>
+        <p>Prediction For Apr 2022</p>
+        <div style="display: flex">
+          <div style="padding: 20px; border-right: 1px solid grey">
+            <div>Current Price</div>
+            <div>{{shprice}}</div>
+          </div>
+          <div style="padding: 20px">
+            <div>High</div>
+            <div>₹ {{prediction1}}</div>
+          </div>
+          <div style="padding: 20px">
+            <div>Median</div>
+            <div>₹ {{prediction2}}</div>
+          </div>
+          <div style="padding: 20px">
+            <div>Low</div>
+            <div>₹ {{prediction3}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <img src="static/{{file_name2}}.png" width="400px" hight="400px" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
